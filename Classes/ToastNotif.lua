@@ -4,9 +4,9 @@ local Signal = SharedRequire('Utility/Signal.lua');
 
 local TweenService, UserInputService = Services:Get('TweenService', 'UserInputService');
 
-local Notifications = {};
+local Notifications = {}
 
-local Notification = {};
+local Notification = {}
 Notification.__index = Notification;
 Notification.NotifGap = 40;
 
