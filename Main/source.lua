@@ -14,6 +14,7 @@ if (not game:IsLoaded()) then
     game.Loaded:Wait()
 end
 
+local t = {}
 local function define(name, value, parent)
 	local lol = (typeof(value) == "function" and islclosure(value) and newcclosure(value, name)) or value
 	if parent ~= nil then
@@ -107,9 +108,8 @@ for _,v in next, unavailable do
     define(v, none, t)
 end
 
-
---define("syn", t)
---setreadonly(syn, true)
+define("syn", t)
+setreadonly(syn, true)
 
 -- Init Checks
 
