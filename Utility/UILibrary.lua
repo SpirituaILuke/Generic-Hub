@@ -2886,6 +2886,8 @@ do -- // Load
                 pcall(syn.protect_gui, self.base);
                 self.base.Parent = CoreGui;
             end;
+        else
+            self.base.Parent = gethui();
         end
 
         self.main = self:Create('ImageButton', {
@@ -3292,7 +3294,7 @@ do -- // Load
             function joinDiscord(code)
                 for i = 6463, 6472 do -- // Just cause there is a 10 range port
                     if(pcall(function()
-                        syn.request({
+                        request({
                             Url = ('http://127.0.0.1:%s/rpc?v=1'):format(i),
                             Method = 'POST',
                             Headers = {
@@ -3350,10 +3352,10 @@ do -- // Load
                 makefolder('Aztup Hub V3/CustomBackgrounds');
             end;
 
-            local path = string.format('Aztup Hub V3/CustomBackgrounds/%s.bin', syn.crypt.hash(imageURL));
+            local path = string.format('Aztup Hub V3/CustomBackgrounds/%s.bin', crypt.hash(imageURL));
 
             if (not isfile(path)) then
-                local suc, httpRequest = pcall(syn.request, {
+                local suc, httpRequest = pcall(request, {
                     Url = imageURL,
                 });
 

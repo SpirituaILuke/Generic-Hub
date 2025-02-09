@@ -216,7 +216,7 @@ local gameId = tostring(game.GameId)
 local gameName = nil
 
 local supportedGamesList = {
-    {6989117155, "R6 Baseplate"}
+    {6989117155, "Baseplate"}
 }
 
 for _, gameEntry in ipairs(supportedGamesList) do
@@ -227,7 +227,9 @@ for _, gameEntry in ipairs(supportedGamesList) do
 end
 
 local function GameInit()
-    if (not gameName) then return warn('no custom game for this game'); end
+    if not gameName then
+         return warn('no custom game for this game')
+    end
     SharedRequire(string.format('Main/Games/%s.lua', gameName:gsub('%s', '')))
 end
 
