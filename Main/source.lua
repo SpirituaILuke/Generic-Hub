@@ -288,9 +288,9 @@ if (gameName) then
     end
 end
 
-local loadingGameStart = tick();
-GameInit();
-print('[Script] [Game] Took %.02f to load', tick() - loadingGameStart);
+local loadingGameStart = tick()
+GameInit()
+print('[Script] [Game] Took %.02f to load', tick() - loadingGameStart)
 
 local keybindLoadAt = tick();
 
