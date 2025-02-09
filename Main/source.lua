@@ -218,14 +218,12 @@ function printf() end;
 local LocalPlayer = Players.LocalPlayer
 local executed = false
 
-local supportedGamesList = {
-    {123131312, "balblablaname"},
-    {987654321, "anothergame"},
-    {111222333, "yetanothergame"}
-}
-
 local gameId = tostring(game.GameId)
 local gameName = nil
+
+local supportedGamesList = {
+    {6989117155, "R6 Baseplate"}
+}
 
 for _, gameEntry in ipairs(supportedGamesList) do
     if tostring(gameEntry[1]) == gameId then
@@ -234,11 +232,10 @@ for _, gameEntry in ipairs(supportedGamesList) do
     end
 end
 
-if gameName then
-    print(gameName)
-else
-    warn("Game ID not found in the list!")
-end
+local function GameInit()
+    if (not gameName) then return warn('no custom game for this game'); end;
+    SharedRequire(string.format('Main/Games/%s.lua', gameName:gsub('%s', '')));
+end;
 
 --//Base library
 
@@ -292,12 +289,10 @@ if (gameName) then
     end
 end
 
---[[
-local universalLoadAt = tick();
-
-SharedRequire('Main/Universal/ESP.lua');
-printf('[Script] [Universal] Took %.02f to load', tick() - universalLoadAt);
---]]
+local loadingGameStart = tick();
+GameInit();
+Utility.setupRenderOverload();
+printf('[Script] [Game] Took %.02f to load', tick() - loadingGameStart);
 
 local keybindLoadAt = tick();
 
