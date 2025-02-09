@@ -60,12 +60,29 @@ define("create_comm_channel", function()
     local bindable = Instance.new("BindableEvent")
     local object = newproxy(true)
     getmetatable(object).__index = function(_, i)
+        if i == "bro" then
+            return bindable
+        end
     end
     local event = setmetatable({
         __OBJECT = object
     }, {
         __type = "SynSignal",
         __index = function(self, i)
+            if i == "Connect" then
+                return function(_, callback)
+                    print(callback)
+                    return self.__OBJECT.bro.Event:Connect(callback)
+                end
+            elseif i == "Fire" then
+                return function(_, ...)
+                    return self.__OBJECT.bro:Fire(...)
+                end
+            end
+        end,
+        __newindex = function()
+            erroruiconsole("SynSignal table is readonly.")
+        end
     })
     comm_channels[id] = event
     return id, event
