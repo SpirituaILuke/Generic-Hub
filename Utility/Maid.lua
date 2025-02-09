@@ -113,11 +113,7 @@ function Maid:DoCleaning()
 		elseif (Signal.isSignal(taskData)) then
 			taskData:Destroy();
 		elseif typeof(taskData) == tableStr then
-			if taskData.Remove then
-				taskData:Remove()
-			else
-				warn("No Remove method found for this table")
-			end
+			taskData:Remove();
 		elseif (typeof(taskData) == threadStr) then
 			task.cancel(taskData);
 		elseif taskData.Destroy then
