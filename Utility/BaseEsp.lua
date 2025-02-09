@@ -73,7 +73,7 @@ if (not playerScriptsLoader and gameName == 'Apocalypse Rising 2') then
 	playerScriptsLoader = playerScripts:FindFirstChild('FreecamDelete');
 end;
 
-[[
+--[[
 if (playerScriptsLoader) then
 	for _ = 1, NUM_ACTORS do
 		local commId, commEvent;
@@ -151,7 +151,7 @@ else
 	table.insert(actors, {commEvent = commEvent});
 	readyCount = 1;
 end;
-]]
+--]]
 
 local count = 1;
 
