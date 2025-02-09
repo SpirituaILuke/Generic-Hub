@@ -1,4 +1,4 @@
-return [[
+return
     local Players = game:GetService('Players');
     local RunService = game:GetService('RunService');
     local LocalPlayer = Players.LocalPlayer;
@@ -44,7 +44,7 @@ return [[
     local realDestroyRP;
     local realGetRPProperty;
 
-    if (isSynapseV3) then
+    if not isSynapseV3 then
         realGetRPProperty = function(self, p, v)
             return self[p];
         end;
@@ -71,7 +71,6 @@ return [[
         assert(realGetRPProperty);
     end;
 
-
     local updateDrawingQueue = {};
     local destroyDrawingQueue = {};
 
@@ -87,7 +86,7 @@ return [[
     local findFirstChild = clonefunction(game.FindFirstChild);
     local getAttribute = clonefunction(game.GetAttribute);
 
-    if (isSynapseV3) then
+    if not isSynapseV3 then
         setRP = realSetRP;
         getRPProperty = realGetRPProperty;
     else
