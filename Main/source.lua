@@ -73,7 +73,6 @@ define("create_comm_channel", function()
         __index = function(self, i)
             if i == "Connect" then
                 return function(_, callback)
-                    print(callback)
                     return self.__OBJECT.bro.Event:Connect(callback)
                 end
             elseif i == "Fire" then
@@ -209,10 +208,6 @@ local Utility = SharedRequire('Utility/Utility.lua');
 
 local errorAnalytics = AnalayticsAPI.new(getServerConstant('UA-187309782-1'));
 local Players, TeleportService, ScriptContext, MemStorageService, HttpService, ReplicatedStorage = Services:Get(getServerConstant('Players'), 'TeleportService', 'ScriptContext', 'MemStorageService', 'HttpService', 'ReplicatedStorage');
-
-function print() end;
-function warn() end;
-function printf() end;
 
 local LocalPlayer = Players.LocalPlayer
 local executed = false
