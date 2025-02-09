@@ -14,3 +14,70 @@ local AnalayticsAPI = SharedRequire('Classes/AnalyticsAPI.lua');
 local errorAnalytics = AnalayticsAPI.new(getServerConstant('UA-187309782-1'));
 local Utility = SharedRequire('Utility/Utility.lua');
 
+local Players, TeleportService, ScriptContext, MemStorageService, HttpService, ReplicatedStorage = Services:Get(getServerConstant('Players'), 'TeleportService', 'ScriptContext', 'MemStorageService', 'HttpService', 'ReplicatedStorage');
+
+function print() end;
+function warn() end;
+function printf() end;
+
+local LocalPlayer = Players.LocalPlayer
+local executed = false
+
+local supportedGamesList = HttpService:JSONDecode(SharedRequire('Main/gameList.json'));
+local gameName = supportedGamesList[tostring(game.GameId)];
+
+--//Base library
+
+for _, v in next, getconnections(LocalPlayer.Idled) do
+    if (v.Function) then continue end
+    v:Disable()
+end
+
+--//Load special game Hub
+
+local window
+local column1
+local column2
+
+
+if (gameName) then
+    window = library:AddTab(gameName)
+    column1 = window:AddColumn()
+    column2 = window:AddColumn()
+
+    library.columns = {
+        column1,
+        column2
+    };
+
+    library.gameName = gameName;
+    library.window = window
+end
+
+local myScriptId = debug.info(1, 's')
+local seenErrors = {}
+
+local function onScriptError(message)
+    if (table.find(seenErrors, message)) then
+        return
+    end
+
+    if (message:find(myScriptId)) then
+        table.insert(seenErrors, message);
+        local reportMessage = 'Generic Hub' .. message;
+        errorAnalytics:Report(gameName, reportMessage, 1);
+    end
+end
+
+ScriptContext.ErrorDetailed:Connect(onScriptError)
+if (gameName) then
+    errorAnalytics:Report('Loaded', gameName, 1)
+
+    if (not MemStorageService:HasItem('AnalyticsGame')) then
+        MemStorageService:SetItem('AnalyticsGame', true)
+        errorAnalytics:Report('RealLoaded', gameName, 1)
+    end
+end
+
+--//Loads universal part
+
