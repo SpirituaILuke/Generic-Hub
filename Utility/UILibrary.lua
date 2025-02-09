@@ -20,16 +20,16 @@ if getgenv().library then
 	getgenv().library:Unload();
 end;
 
-if (not isfile('Aztup Hub V3/configs')) then
-    makefolder('Aztup Hub V3/configs');
+if (not isfile('Generic Hub/configs')) then
+    makefolder('Generic Hub/configs');
 end;
 
-if (not isfile('Aztup Hub V3/configs/globalConf.bin')) then
+if (not isfile('Generic Hub/configs/globalConf.bin')) then
     -- By default global config is turned on
-    writefile('Aztup Hub V3/configs/globalConf.bin', 'true');
+    writefile('Generic Hub/configs/globalConf.bin', 'true');
 end;
 
-local globalConfFilePath = 'Aztup Hub V3/configs/globalConf.bin';
+local globalConfFilePath = 'Generic Hub/configs/globalConf.bin';
 local isGlobalConfigOn = readfile(globalConfFilePath) == 'true';
 
 local library = {
@@ -37,7 +37,7 @@ local library = {
 	tabs = {},
 	draggable = true,
 	flags = {},
-	title = string.format('Aztup Hub | v%s', scriptVersion or 'DEBUG'),
+	title = string.format('Generic Hub | v.%s', scriptVersion or 'DEBUG'),
 	open = false,
 	popup = nil,
 	instances = {},
@@ -47,7 +47,7 @@ local library = {
     configVars = {},
 	tabSize = 0,
 	theme = {},
-	foldername =  isGlobalConfigOn and 'Aztup Hub V3/configs/global' or string.format('Aztup Hub V3/configs/%s', tostring(LocalPlayer.UserId)),
+	foldername =  isGlobalConfigOn and 'Generic Hub/configs/global' or string.format('Generic Hub/configs/%s', tostring(LocalPlayer.UserId)),
 	fileext = getServerConstant('.json'),
     chromaColor = Color3.new()
 }
@@ -3348,11 +3348,11 @@ do -- // Load
 
             if (imageURL == '') then return end;
 
-            if (not isfolder('Aztup Hub V3/CustomBackgrounds')) then
-                makefolder('Aztup Hub V3/CustomBackgrounds');
+            if (not isfolder('Generic Hub/CustomBackgrounds')) then
+                makefolder('Generic Hub/CustomBackgrounds');
             end;
 
-            local path = string.format('Aztup Hub V3/CustomBackgrounds/%s.bin', crypt.hash(imageURL));
+            local path = string.format('Generic Hub/CustomBackgrounds/%s.bin', crypt.hash(imageURL));
 
             if (not isfile(path)) then
                 local suc, httpRequest = pcall(request, {
@@ -3516,7 +3516,7 @@ do -- // Load
         local function getAllConfigs()
             local files = {};
 
-            for _, v in next, listfiles('Aztup Hub V3/configs') do
+            for _, v in next, listfiles('Generic Hub/configs') do
                 if (not isfolder(v)) then continue; end;
 
                 for _, v2 in next, listfiles(v) do
@@ -3631,7 +3631,7 @@ do -- // Load
                     end;
                 end;
 
-                local configData = readfile(string.format('Aztup Hub V3/configs/%s/%s', folderName, fullConfigName));
+                local configData = readfile(string.format('Generic Hub/configs/%s/%s', folderName, fullConfigName));
                 writefile(string.format('%s/%s', library.foldername, fullConfigName), configData);
 
                 library:LoadConfig(configName);
