@@ -23,32 +23,26 @@ function printf() end;
 local LocalPlayer = Players.LocalPlayer
 local executed = false
 
-local gameListContent = SharedRequire('Main/gameList.json')
-local supportedGamesList
+local supportedGamesList = {
+    {123131312, "balblablaname"},
+    {987654321, "anothergame"},
+    {111222333, "yetanothergame"}
+}
+
+local gameId = tostring(game.GameId)
 local gameName = nil
 
-local success, errorMessage = pcall(function()
-    supportedGamesList = HttpService:JSONDecode(gameListContent)
-end)
-
-if success then
-    local gameId = tostring(game.GameId)
-    gameName = nil
-
-    for _, gameEntry in ipairs(supportedGamesList) do
-        if tostring(gameEntry[1]) == gameId then
-            gameName = gameEntry[2]
-            break
-        end
+for _, gameEntry in ipairs(supportedGamesList) do
+    if tostring(gameEntry[1]) == gameId then
+        gameName = gameEntry[2]
+        break
     end
+end
 
-    if gameName then
-        print(gameName)
-    else
-        warn("Game ID not found in the list!")
-    end
+if gameName then
+    print(gameName)
 else
-    warn("Failed to decode JSON: " .. errorMessage)
+    warn("Game ID not found in the list!")
 end
 
 --//Base library
