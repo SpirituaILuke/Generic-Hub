@@ -1,3 +1,5 @@
+local HttpService = game:GetService('HttpService');
+
 local statusEvent = getgenv().ah_statusEvent;
 local function setStatus(...)
     if (not statusEvent) then return end;
@@ -113,116 +115,88 @@ end
 
 -- Init Checks
 
-local originalFunctions = getgenv().originalFunctions or {}
-xpcall(function()
-    local functionsToCheck = {
-        fireServer = Instance.new('RemoteEvent').FireServer,
-        invokeServer = Instance.new('RemoteFunction').InvokeServer,
+local functionsToCheck = {
+    fireServer = Instance.new('RemoteEvent').FireServer,
+    invokeServer = Instance.new('RemoteFunction').InvokeServer,
 
-        fire = Instance.new('BindableEvent').Fire,
-        invoke = Instance.new('BindableFunction').Invoke,
+    fire = Instance.new('BindableEvent').Fire,
+    invoke = Instance.new('BindableFunction').Invoke,
 
-        enum = getrawmetatable(Enum).__tostring,
-        signals = getrawmetatable(game.Changed),
-        newIndex = getrawmetatable(game).__newindex,
-        namecall = getrawmetatable(game).__namecall,
-        index = getrawmetatable(game).__index,
+    enum = getrawmetatable(Enum).__tostring,
+    signals = getrawmetatable(game.Changed),
+    newIndex = getrawmetatable(game).__newindex,
+    namecall = getrawmetatable(game).__namecall,
+    index = getrawmetatable(game).__index,
 
-        stringMT = getrawmetatable(''),
+    stringMT = getrawmetatable(''),
 
-        UDim2,
-        Rect,
-        BrickColor,
-        Instance,
-        Region3,
-        Region3int16,
-        utf8,
-        UDim,
-        Vector2,
-        Vector3,
-        CFrame,
+    UDim2,
+    Rect,
+    BrickColor,
+    Instance,
+    Region3,
+    Region3int16,
+    utf8,
+    UDim,
+    Vector2,
+    Vector3,
+    CFrame,
 
-        getrawmetatable(UDim2.new()),
-        getrawmetatable(Rect.new()),
-        getrawmetatable(BrickColor.new()),
-        getrawmetatable(Region3.new()),
-        getrawmetatable(Region3int16.new()),
-        getrawmetatable(utf8),
-        getrawmetatable(UDim.new()),
-        getrawmetatable(Vector2.new()),
-        getrawmetatable(Vector3.new()),
-        getrawmetatable(CFrame.new()),
+    getrawmetatable(UDim2.new()),
+    getrawmetatable(Rect.new()),
+    getrawmetatable(BrickColor.new()),
+    getrawmetatable(Region3.new()),
+    getrawmetatable(Region3int16.new()),
+    getrawmetatable(utf8),
+    getrawmetatable(UDim.new()),
+    getrawmetatable(Vector2.new()),
+    getrawmetatable(Vector3.new()),
+    getrawmetatable(CFrame.new()),
 
-        task.wait,
-        task.spawn,
-        task.delay,
-        task.defer,
+    task.wait,
+    task.spawn,
+    task.delay,
+    task.defer,
 
-        wait,
-        spawn,
-        ypcall,
-        pcall,
-        xpcall,
-        error,
+    wait,
+    spawn,
+    ypcall,
+    pcall,
+    xpcall,
+    error,
 
-        tonumber,
-        tostring,
+    tonumber,
+    tostring,
 
-        rawget,
-        rawset,
-        rawequal,
+    rawget,
+    rawset,
+    rawequal,
 
-        string = string,
-        math = math,
-        bit32 = bit32,
-        table = table,
-        pairs,
-        next,
-        unpack,
-        getfenv,
+    string = string,
+    math = math,
+    bit32 = bit32,
+    table = table,
+    pairs,
+    next,
+    unpack,
+    getfenv,
 
-        jsonEncode = HttpService.JSONEncode,
-        jsonDecode = HttpService.JSONDecode,
-        findFirstChild = game.FindFirstChild,
-    };
+    jsonEncode = HttpService.JSONEncode,
+    jsonDecode = HttpService.JSONDecode,
+    findFirstChild = game.FindFirstChild,
+};
 
-    local function checkForFunction(t, i)
-        local dataType = typeof(t);
+ for i, v in next, functionsToCheck do
+     if (typeof(v) == 'function') then
+        originalFunctions[i] = clonefunction(v);
+     end;
+end;
 
-        if (dataType == 'table') then
-            for i, v in next, t do
-                local suc, result = checkForFunction(v, i);
-                if (not suc) then
-                    return false, result;
-                end;
-            end;
-        elseif (dataType == 'function') then
-            local suc, uv = pcall(debug.getupvalue, t, 1);
+originalFunctions.runOnActor = getgenv().run_on_actor;
+originalFunctions.createCommChannel = getgenv().create_comm_channel;
 
-            if (islclosure(t) or (suc and uv and typeof(uv) ~= 'userdata')) then
-                return false, i;
-            end;
-        end;
-
-        return true;
-    end;
-
-     for i, v in next, functionsToCheck do
-         if (typeof(v) == 'function') then
-            originalFunctions[i] = clonefunction(v);
-         end;
-    end;
-   
-    originalFunctions.runOnActor = getgenv().run_on_actor;
-    originalFunctions.createCommChannel = getgenv().create_comm_channel;
-
-    print(originalFunctions)
-
-    getgenv().originalFunctions = originalFunctions
-end, function()
-    --messagebox('Sanity check failed\nThis usually happens cause you ran a script before the hub.\n\nIf you don\'t know why this happened.\nPlease check your auto execute folder.\n\nThis error has been logged.', 'Aztup Hub Security Error', 0);
-    return;
-end);
+print(originalFunctions)
+getgenv().originalFunctions = originalFunctions
 
 -- Main
 
