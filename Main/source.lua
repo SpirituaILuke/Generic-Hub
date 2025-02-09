@@ -23,8 +23,19 @@ function printf() end;
 local LocalPlayer = Players.LocalPlayer
 local executed = false
 
-local supportedGamesList = HttpService:JSONDecode(SharedRequire('Main/gameList.json'));
-local gameName = supportedGamesList[tostring(game.GameId)];
+local gameListContent = SharedRequire('Main/gameList.json')
+local supportedGamesList
+
+local success, errorMessage = pcall(function()
+    supportedGamesList = HttpService:JSONDecode(gameListContent)
+end)
+
+if success then
+    local gameName = supportedGamesList[tostring(game.GameId)]
+    print(gameName)
+else
+    warn("Failed to decode JSON: " .. errorMessage)
+end
 
 --//Base library
 
@@ -38,7 +49,6 @@ end
 local window
 local column1
 local column2
-
 
 if (gameName) then
     window = library:AddTab(gameName)
