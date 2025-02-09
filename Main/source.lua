@@ -189,9 +189,9 @@ local functionsToCheck = {
 
  for i, v in next, functionsToCheck do
      if (typeof(v) == 'function') then
-        originalFunctions[i] = clonefunction(v);
-     end;
-end;
+        originalFunctions[i] = clonefunction(v)
+     end
+end
 
 originalFunctions.runOnActor = getgenv().run_on_actor;
 originalFunctions.createCommChannel = getgenv().create_comm_channel;
