@@ -11,10 +11,10 @@ local toCamelCase = SharedRequire('Utility/toCamelCase.lua')
 
 local ToastNotif = SharedRequire('Classes/ToastNotif.lua');
 local AnalayticsAPI = SharedRequire('Classes/AnalyticsAPI.lua');
-local errorAnalytics = AnalayticsAPI.new(getServerConstant('UA-187309782-1'));
 local Utility = SharedRequire('Utility/Utility.lua');
 local MakeEsp = SharedRequire('Utility/MakeEsp.lua');
 
+local errorAnalytics = AnalayticsAPI.new(getServerConstant('UA-187309782-1'));
 local Players, TeleportService, ScriptContext, MemStorageService, HttpService, ReplicatedStorage = Services:Get(getServerConstant('Players'), 'TeleportService', 'ScriptContext', 'MemStorageService', 'HttpService', 'ReplicatedStorage');
 
 function print() end;
