@@ -99,3 +99,9 @@ end
 
 --//Loads universal part
 
+local universalLoadAt = tick();
+
+SharedRequire('Main/Universal/ESP.lua');
+printf('[Script] [Universal] Took %.02f to load', tick() - universalLoadAt);
+
+
