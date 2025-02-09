@@ -3,6 +3,7 @@ getgenv().getupvalue = debug.getupvalue
 local library = SharedRequire('Utility/UILibrary.lua');
 local Utility = SharedRequire('Utility/Utility.lua');
 local Services = SharedRequire('Utility/Services.lua');
+local Drawing = SharedRequire('Utility/Drawing.lua');
 
 local RunService, UserInputService, HttpService = Services:Get('RunService', 'UserInputService', 'HttpService');
 

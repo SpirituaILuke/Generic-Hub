@@ -44,7 +44,6 @@ end;
 do -- // Hooks
     if(not shared.DrawingLibrary) then
         shared.DrawingLibrary = DrawingLibrary;
-        shared.Drawing = DrawingLibrary;
 
         local old;
         old = hookfunction(typeof, newcclosure(function(self)
