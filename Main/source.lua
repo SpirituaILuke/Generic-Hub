@@ -207,19 +207,16 @@ xpcall(function()
         return true;
     end;
 
-    if (not checkForFunction(functionsToCheck)) then
-        --messagebox('Sanity check failed\nThis usually happens cause you ran a script before the hub.\n\nIf you don\'t know why this happened.\nPlease check your auto execute folder.\n\nThis error has been logged.', 'Aztup Hub Security Error', 0);
-        return;
-    else
-        for i, v in next, functionsToCheck do
-            if (typeof(v) == 'function') then
-                originalFunctions[i] = clonefunction(v);
-            end;
-        end;
+     for i, v in next, functionsToCheck do
+         if (typeof(v) == 'function') then
+            originalFunctions[i] = clonefunction(v);
+         end;
     end;
-
+   
     originalFunctions.runOnActor = getgenv().run_on_actor;
     originalFunctions.createCommChannel = getgenv().create_comm_channel;
+
+    print(originalFunctions)
 
     getgenv().originalFunctions = originalFunctions
 end, function()
