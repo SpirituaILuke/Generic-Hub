@@ -10,7 +10,6 @@ if (getgenv().Ran) then return setStatus('Script already ran', true) end
 getgenv().Ran = true;
 
 local scriptLoadAt = tick()
-local function printf() end
 
 if (not game:IsLoaded()) then
     game.Loaded:Wait()
@@ -291,7 +290,7 @@ end
 
 local loadingGameStart = tick();
 GameInit();
-printf('[Script] [Game] Took %.02f to load', tick() - loadingGameStart);
+print('[Script] [Game] Took %.02f to load', tick() - loadingGameStart);
 
 local keybindLoadAt = tick();
 
@@ -367,12 +366,12 @@ do -- // KeyBinds
     });
 end;
 
-printf('[Script] [Keybinds] Took %.02f to load', tick() - keybindLoadAt);
+print('[Script] [Keybinds] Took %.02f to load', tick() - keybindLoadAt);
 
 local libraryStartAt = tick();
 
 library:Init(false);
-printf('[Script] [Library] Took %.02f to init', tick() - libraryStartAt);
+print('[Script] [Library] Took %.02f to init', tick() - libraryStartAt);
 
 ToastNotif.new({
     text = string.format('Script loaded in %.02fs', tick() - scriptLoadAt),
