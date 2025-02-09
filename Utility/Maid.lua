@@ -70,7 +70,7 @@ function Maid:__newindex(index, newTask)
 		elseif (typeof(oldTask) == 'thread') then
 			task.cancel(oldTask);
 		elseif oldTask.Destroy then
-			oldTask:Destroy()
+			oldTask:Destroy();
 		end
 	end
 end
@@ -113,7 +113,11 @@ function Maid:DoCleaning()
 		elseif (Signal.isSignal(taskData)) then
 			taskData:Destroy();
 		elseif typeof(taskData) == tableStr then
-			taskData:Remove();
+			if taskData.Remove then
+				taskData:Remove()
+			else
+				warn("No Remove method found for this table")
+			end
 		elseif (typeof(taskData) == threadStr) then
 			task.cancel(taskData);
 		elseif taskData.Destroy then
