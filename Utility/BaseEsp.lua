@@ -151,9 +151,9 @@ else
 	table.insert(actors, {commEvent = commEvent});
 	readyCount = 1;
 end;
---]]
+]]
 
-local count = 1;
+local count = 1
 
 local function createBaseEsp(flag, container)
 	container = container or {};
@@ -248,7 +248,7 @@ local function createBaseEsp(flag, container)
 	end;
 
 	return BaseEsp;
-end;
+end
 
 library.OnFlagChanged:Connect(function(data)
 	broadcastEvent:Fire({
