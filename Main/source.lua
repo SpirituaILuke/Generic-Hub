@@ -44,7 +44,7 @@ end
 
 define("on_actor_created", on_actor_created.Event, t)
 	define("getactors", function()
-	return actors
+	    return actors
 end)
 
 define("run_on_actor", function(actor, code)
@@ -53,7 +53,7 @@ define("run_on_actor", function(actor, code)
     assert(typeof(code) == "string", ("bad argument #2 to 'run_on_actor' (string expected, got %s)"):format(typeof(code)))
 
     loadstring(code, "run_on_actor")()
-end)
+end, t)
 
 local comm_channels = {}
 define("create_comm_channel", function()
@@ -87,7 +87,7 @@ define("create_comm_channel", function()
     })
     comm_channels[id] = event
     return id, event
-end)
+end, t)
 
 define("get_comm_channel", function(id)
     local channel = comm_channels[id]
@@ -95,7 +95,7 @@ define("get_comm_channel", function(id)
         warn("bad argument #1 to 'get_comm_channel' (invalid communication channel)")
     end
     return channel
-end)
+end, t)
 
 local unavailable = {
     "create_secure_function",
@@ -109,8 +109,8 @@ for _,v in next, unavailable do
 end
 
 define("syn", t)
-setreadonly(syn, true)
 
+--setreadonly(syn, true)
 -- Init Checks
 
 local originalFunctions = {};
@@ -218,8 +218,8 @@ xpcall(function()
         end;
     end;
 
-    originalFunctions.runOnActor = getgenv().run_on_actor;
-    originalFunctions.createCommChannel = getgenv().create_comm_channel;
+    originalFunctions.runOnActor = t["run_on_actor"]
+    originalFunctions.createCommChannel = t["create_comm_channel"]
 end, function()
     --messagebox('Sanity check failed\nThis usually happens cause you ran a script before the hub.\n\nIf you don\'t know why this happened.\nPlease check your auto execute folder.\n\nThis error has been logged.', 'Aztup Hub Security Error', 0);
     return;
