@@ -12,7 +12,6 @@ local vectorToWorldSpace = CFrame.new().VectorToWorldSpace;
 local getMouseLocation = clonefunction(UserInputService.GetMouseLocation);
 
 local id = HttpService:GenerateGUID(false);
-local userId = accountData.uuid:sub(1, 4);
 
 local lerp = Color3.new().lerp;
 local flags = library.flags;
@@ -263,7 +262,7 @@ do --// Entity ESP
         local label, box, line, healthBar, healthBarValue = self._label, self._box, self._line, self._healthBar, self._healthBarValue;
         local pluginData = self:Plugin();
 
-        local text = '[' .. (pluginData.playerName or self._playerName) .. '] [' .. mathFloor(distance) .. ']\n[' .. mathFloor(health) .. '/' .. mathFloor(maxHealth) .. '] [' .. mathFloor(floatHealth) .. ' %]' .. (pluginData.text or '') .. ' [' .. userId .. ']';
+        local text = '[' .. (pluginData.playerName or self._playerName) .. '] [' .. mathFloor(distance) .. ']\n[' .. mathFloor(health) .. '/' .. mathFloor(maxHealth) .. '] [' .. mathFloor(floatHealth) .. ' %]' .. (pluginData.text or '');
 
         setRP(label, 'Visible', visibleOnScreen);
         setRP(label, 'Position', Vector2New(labelPos.X, labelPos.Y - realGetRPProperty(self._labelObject, 'TextBounds').Y));
