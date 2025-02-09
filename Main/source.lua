@@ -115,6 +115,7 @@ end
 
 -- Init Checks
 
+local originalFunctions = {};
 local functionsToCheck = {
     fireServer = Instance.new('RemoteEvent').FireServer,
     invokeServer = Instance.new('RemoteFunction').InvokeServer,
