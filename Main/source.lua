@@ -207,7 +207,6 @@ local toCamelCase = SharedRequire('Utility/toCamelCase.lua')
 local ToastNotif = SharedRequire('Classes/ToastNotif.lua');
 local AnalayticsAPI = SharedRequire('Classes/AnalyticsAPI.lua');
 local Utility = SharedRequire('Utility/Utility.lua');
-local MakeEsp = SharedRequire('Utility/MakeEsp.lua');
 
 local errorAnalytics = AnalayticsAPI.new(getServerConstant('UA-187309782-1'));
 local Players, TeleportService, ScriptContext, MemStorageService, HttpService, ReplicatedStorage = Services:Get(getServerConstant('Players'), 'TeleportService', 'ScriptContext', 'MemStorageService', 'HttpService', 'ReplicatedStorage');
@@ -293,11 +292,97 @@ if (gameName) then
     end
 end
 
---//Loads universal part
-
+--[[
 local universalLoadAt = tick();
 
 SharedRequire('Main/Universal/ESP.lua');
 printf('[Script] [Universal] Took %.02f to load', tick() - universalLoadAt);
+--]]
 
+local keybindLoadAt = tick();
 
+do -- // KeyBinds
+    local Binds = {};
+
+    local keybinds = library:AddTab('Keybinds');
+
+    local column1 = keybinds:AddColumn();
+    local column2 = keybinds:AddColumn();
+    local column3 = keybinds:AddColumn();
+
+    local index = 0;
+    local columns = {};
+
+    table.insert(columns, column1);
+    table.insert(columns, column2);
+    table.insert(columns, column3);
+
+    local sections = setmetatable({}, {
+        __index = function(self, p)
+            index = (index % 3) + 1;
+
+            local section = columns[index]:AddSection(p);
+
+            rawset(self, p, section);
+
+            return section;
+        end
+    });
+
+    local blacklistedSections = {'Trinkets', 'Ingredients', 'Spells', 'Bots', 'Configs'};
+    local temp = {};
+
+    for _, v in next, library.options do
+        if ((v.type == 'toggle' or v.type == 'button') and v.section and not table.find(blacklistedSections, v.section.title)) then
+            local section = sections[v.section.title];
+
+            table.insert(temp, function()
+                return section:AddBind({
+                    text = v.text == 'Enable' and string.format('%s [%s]', v.text, v.section.title) or v.text,
+                    parentFlag = v.flag,
+                    flag = v.flag .. " bind",
+                    callback = function()
+                        if (v.type == 'toggle') then
+                            v:SetState(not v.state);
+                        elseif (v.type == 'button') then
+                            task.spawn(v.callback);
+                        end;
+                    end
+                });
+            end);
+        end;
+    end;
+
+    for _, v in next, temp do
+        local object = v();
+
+        table.insert(Binds, object);
+    end;
+
+    local options = column3:AddSection('Options');
+
+    options:AddButton({
+        text = 'Reset All Keybinds',
+        callback = function()
+            if(library:ShowConfirm('Are you sure you want to reset <font color="rgb(255, 0, 0)">all</font> keybinds?')) then
+                for _, v in next, Binds do
+                    v:SetKey(Enum.KeyCode.Backspace);
+                end;
+            end;
+        end
+    });
+end;
+
+printf('[Script] [Keybinds] Took %.02f to load', tick() - keybindLoadAt);
+
+local libraryStartAt = tick();
+
+library:Init(false);
+printf('[Script] [Library] Took %.02f to init', tick() - libraryStartAt);
+
+ToastNotif.new({
+    text = string.format('Script loaded in %.02fs', tick() - scriptLoadAt),
+    duration = 5
+});
+
+getgenv().ah_loaded = true;
