@@ -95,6 +95,7 @@ do -- // Load
     }
 
     local function onInputBegan(input, gpe)
+        print("Input began")
         local inputType = input.UserInputType;
         if (inputType == mouseMovement) then return end;
 
