@@ -291,7 +291,6 @@ end
 
 local loadingGameStart = tick();
 GameInit();
-Utility.setupRenderOverload();
 printf('[Script] [Game] Took %.02f to load', tick() - loadingGameStart);
 
 local keybindLoadAt = tick();
