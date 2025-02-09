@@ -232,9 +232,9 @@ for _, gameEntry in ipairs(supportedGamesList) do
 end
 
 local function GameInit()
-    if (not gameName) then return warn('no custom game for this game'); end;
-    SharedRequire(string.format('Main/Games/%s.lua', gameName:gsub('%s', '')));
-end;
+    if (not gameName) then return warn('no custom game for this game'); end
+    SharedRequire(string.format('Main/Games/%s.lua', gameName:gsub('%s', '')))
+end
 
 --//Base library
 
@@ -292,7 +292,7 @@ local loadingGameStart = tick()
 GameInit()
 print('[Script] [Game] Took %.02f to load', tick() - loadingGameStart)
 
-local keybindLoadAt = tick();
+local keybindLoadAt = tick()
 
 do -- // KeyBinds
     local Binds = {};
