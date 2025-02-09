@@ -10,6 +10,8 @@ local LocalPlayer = Players.LocalPlayer;
 local maid = Maid.new();
 local entityEspList = {};
 
+print("Esp Check 1")
+
 local function onPlayerAdded(player)
     if (player == LocalPlayer) then return end;
     local espEntity = EntityESP.new(player);
@@ -25,6 +27,8 @@ end;
 local function onPlayerRemoving(player)
     library.unloadMaid[player] = nil;
 end;
+
+print("Esp Check 2")
 
 library.OnLoad:Connect(function()
     Players.PlayerAdded:Connect(onPlayerAdded);
@@ -83,6 +87,8 @@ local column2 = esp:AddColumn();
 local espSettings = column1:AddSection(getServerConstant('Esp Settings'));
 local espCustomisation = column2:AddSection(getServerConstant('Esp Customisation'));
 local proximityArrows = column1:AddSection(getServerConstant('Proximity Arrows'));
+
+print("Esp Check 3")
 
 espSettings:AddToggle({
     text = 'Toggle Esp',

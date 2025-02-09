@@ -1,4 +1,3 @@
-getgenv().getupvalue = debug.getupvalue
 
 local library = SharedRequire('Utility/UILibrary.lua');
 local Utility = SharedRequire('Utility/Utility.lua');
