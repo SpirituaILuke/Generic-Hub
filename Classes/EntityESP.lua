@@ -56,7 +56,7 @@ local destroyRP;
 
 local scalarSize = 20;
 
-if (not isSynapseV3) then
+if syn then
 	local lineUpvalues = getupvalue(Drawing.new, 4).__index;
 	local lineUpvalues2 = getupvalue(Drawing.new, 4).__newindex;
 
