@@ -44,7 +44,7 @@ end
 
 define("on_actor_created", on_actor_created.Event, t)
 	define("getactors", function()
-	    return actors
+	return actors
 end)
 
 define("run_on_actor", function(actor, code)
@@ -53,7 +53,7 @@ define("run_on_actor", function(actor, code)
     assert(typeof(code) == "string", ("bad argument #2 to 'run_on_actor' (string expected, got %s)"):format(typeof(code)))
 
     loadstring(code, "run_on_actor")()
-end, t)
+end)
 
 local comm_channels = {}
 define("create_comm_channel", function()
@@ -87,7 +87,7 @@ define("create_comm_channel", function()
     })
     comm_channels[id] = event
     return id, event
-end, t)
+end)
 
 define("get_comm_channel", function(id)
     local channel = comm_channels[id]
@@ -95,7 +95,7 @@ define("get_comm_channel", function(id)
         warn("bad argument #1 to 'get_comm_channel' (invalid communication channel)")
     end
     return channel
-end, t)
+end)
 
 local unavailable = {
     "create_secure_function",
@@ -108,12 +108,12 @@ for _,v in next, unavailable do
     define(v, none, t)
 end
 
-define("syn", t)
-
+--define("syn", t)
 --setreadonly(syn, true)
+
 -- Init Checks
 
-local originalFunctions = {};
+local originalFunctions = getgenv().originalFunctions or {}
 xpcall(function()
     local functionsToCheck = {
         fireServer = Instance.new('RemoteEvent').FireServer,
@@ -197,7 +197,7 @@ xpcall(function()
                 end;
             end;
         elseif (dataType == 'function') then
-            local suc, uv = pcall(getupvalue, t, 1);
+            local suc, uv = pcall(debug.getupvalue, t, 1);
 
             if (islclosure(t) or (suc and uv and typeof(uv) ~= 'userdata')) then
                 return false, i;
@@ -218,8 +218,10 @@ xpcall(function()
         end;
     end;
 
-    originalFunctions.runOnActor = t["run_on_actor"]
-    originalFunctions.createCommChannel = t["create_comm_channel"]
+    originalFunctions.runOnActor = getgenv().run_on_actor;
+    originalFunctions.createCommChannel = getgenv().create_comm_channel;
+
+    getgenv().originalFunctions = originalFunctions
 end, function()
     --messagebox('Sanity check failed\nThis usually happens cause you ran a script before the hub.\n\nIf you don\'t know why this happened.\nPlease check your auto execute folder.\n\nThis error has been logged.', 'Aztup Hub Security Error', 0);
     return;
