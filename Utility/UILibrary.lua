@@ -52,7 +52,7 @@ local library = {
     chromaColor = Color3.new()
 }
 
-library.originalTitle = library.title;
+library.originalTitle = library.title
 
 do -- // Load
     library.unloadMaid:GiveTask(task.spawn(function()
@@ -66,7 +66,7 @@ do -- // Load
 
     -- if(debugMode) then
         getgenv().library = library
-    -- end;
+    -- end
 
     library.OnLoad = Signal.new();
     library.OnKeyPress = Signal.new();
