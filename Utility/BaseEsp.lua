@@ -50,7 +50,9 @@ local playerScripts = LocalPlayer:WaitForChild('PlayerScripts')
 local playerScriptsLoader = playerScripts:FindFirstChild('PlayerScriptsLoader');
 local actors = {};
 
+local count = 1
 local readyCount = 0;
+
 local broadcastEvent = Instance.new('BindableEvent');
 
 local gameName = nil
@@ -70,90 +72,8 @@ for _, gameEntry in ipairs(supportedGamesList) do
 end
 
 if (not playerScriptsLoader and gameName == 'Apocalypse Rising 2') then
-	playerScriptsLoader = playerScripts:FindFirstChild('FreecamDelete');
-end;
-
---[[
-if (playerScriptsLoader) then
-	for _ = 1, NUM_ACTORS do
-		local commId, commEvent;
-
-		if not isSynapseV3 then
-			commEvent = {
-				_event = Instance.new('BindableEvent'),
-
-				Connect = function(self, f)
-					return self._event.Event:Connect(f)
-				end,
-
-				Fire = function(self, ...)
-					self._event:Fire(...);
-				end
-			};
-		else
-			commId, commEvent = getgenv().create_comm_channel();
-		end;
-
-		local clone = playerScriptsLoader:Clone();
-		local actor = Instance.new('Actor');
-		clone.Parent = actor;
-
-		local playerModule = CorePackages.InGameServices.MouseIconOverrideService:Clone();
-		playerModule.Name = 'PlayerModule';
-		playerModule.Parent = actor;
-
-		if isSynapseV3 then
-			syn.protect_gui(actor);
-		end;
-
-		actor.Parent = LocalPlayer.PlayerScripts;
-
-		local connection;
-
-		connection = commEvent:Connect(function(data)
-			if (data.updateType == 'ready') then
-				commEvent:Fire({updateType = 'giveEvent', event = broadcastEvent, gameName = gameName});
-				actor:Destroy();
-
-				readyCount += 1;
-
-				connection:Disconnect();
-				connection = nil;
-			end;
-		end);
-
-		--originalFunctions.runOnActor(actor, SharedRequire('Utility/BaseParallel.lua'), commId or commEvent);
-		table.insert(actors, {
-			actor = actor,
-			commEvent = commEvent
-		});
-	end;
-
-	print('Waiting for actors');
-	repeat task.wait(); until readyCount >= NUM_ACTORS;
-	print('All actors have been loaded');
-else
-	local commId, commEvent = getgenv().create_comm_channel();
-
-	local connection;
-	connection = commEvent:Connect(function(data)
-		print("Got data": .. data)
-		if (data.updateType == 'ready') then
-			connection:Disconnect();
-			connection = nil;
-
-			commEvent:Fire({updateType = 'giveEvent', event = broadcastEvent});
-		end;
-	end);
-
-	loadstring(SharedRequire('Utility/BaseParallel.lua'))(commId);
-
-	table.insert(actors, {commEvent = commEvent});
-	readyCount = 1;
-end;
-]]
-
-local count = 1
+	playerScriptsLoader = playerScripts:FindFirstChild('FreecamDelete')
+end
 
 local function createBaseEsp(flag, container)
 	container = container or {};
