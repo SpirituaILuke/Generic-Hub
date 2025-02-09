@@ -107,8 +107,8 @@ for _,v in next, unavailable do
     define(v, none, t)
 end
 
-define("syn", t)
-setreadonly(syn, true)
+--define("syn", t)
+--setreadonly(syn, true)
 
 -- Init Checks
 
