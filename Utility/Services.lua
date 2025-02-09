@@ -1,15 +1,15 @@
-local Services = {};
-local vim = getvirtualinputmanager and getvirtualinputmanager();
+local Services = {}
+local vim = getvirtualinputmanager and getvirtualinputmanager()
 
 function Services:Get(...)
-    local allServices = {};
+    local allServices = {}
 
     for _, service in next, {...} do
-        table.insert(allServices, self[service]);
+        table.insert(allServices, self[service])
     end
 
-    return unpack(allServices);
-end;
+    return unpack(allServices)
+end
 
 setmetatable(Services, {
     __index = function(self, p)
@@ -25,6 +25,6 @@ setmetatable(Services, {
         rawset(self, p, service);
         return rawget(self, p);
     end,
-});
+})
 
 return Services;

@@ -1,11 +1,11 @@
 
 -- // Services
 
-local libraryLoadAt = tick();
+local libraryLoadAt = tick()
 
-local Signal = SharedRequire('Utility/Signal.lua');
-local Services = SharedRequire('Utility/Services.lua');
-local KeyBindVisualizer = SharedRequire('Classes/KeyBindVisualiser.lua');
+local Signal = SharedRequire('Utility/Signal.lua')
+local Services = SharedRequire('Utility/Services.lua')
+local KeyBindVisualizer = SharedRequire('Classes/KeyBindVisualiser.lua')
 
 local CoreGui, Players, RunService, TextService, UserInputService, ContentProvider, HttpService, TweenService, GuiService, TeleportService = Services:Get('CoreGui', 'Players', 'RunService', 'TextService', 'UserInputService', 'ContentProvider', 'HttpService', 'TweenService', 'GuiService', 'TeleportService');
 

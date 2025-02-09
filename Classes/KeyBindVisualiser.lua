@@ -1,13 +1,13 @@
-local Services = SharedRequire('Utility/Services.lua');
-local Maid = SharedRequire('Utility/Maid.lua');
+local Services = SharedRequire('Utility/Services.lua')
+local Maid = SharedRequire('Utility/Maid.lua')
 
-local UserInputService = Services:Get('UserInputService');
+local UserInputService = Services:Get('UserInputService')
 
-local keybindVisualizer = {};
-keybindVisualizer.__index = keybindVisualizer;
+local keybindVisualizer = {}
+keybindVisualizer.__index = keybindVisualizer
 
-local viewportSize = workspace.CurrentCamera.ViewportSize;
-local library;
+local viewportSize = workspace.CurrentCamera.ViewportSize
+local library
 
 function keybindVisualizer.new()
     local self = setmetatable({}, keybindVisualizer);

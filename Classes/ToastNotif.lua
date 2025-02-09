@@ -1,14 +1,14 @@
-local Services = SharedRequire('Utility/Services.lua');
-local Maid = SharedRequire('Utility/Maid.lua');
-local Signal = SharedRequire('Utility/Signal.lua');
+local Services = SharedRequire('Utility/Services.lua')
+local Maid = SharedRequire('Utility/Maid.lua')
+local Signal = SharedRequire('Utility/Signal.lua')
 
-local TweenService, UserInputService = Services:Get('TweenService', 'UserInputService');
+local TweenService, UserInputService = Services:Get('TweenService', 'UserInputService')
 
 local Notifications = {}
 
 local Notification = {}
-Notification.__index = Notification;
-Notification.NotifGap = 40;
+Notification.__index = Notification
+Notification.NotifGap = 40
 
 local viewportSize = workspace.CurrentCamera.ViewportSize;
 

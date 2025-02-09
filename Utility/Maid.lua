@@ -3,11 +3,11 @@
 -- @classmod Maid
 -- @see Signal
 
-local Signal = SharedRequire('Utility/Signal.lua');
-local tableStr = getServerConstant('table');
-local classNameStr = getServerConstant('Maid');
-local funcStr = getServerConstant('function');
-local threadStr = getServerConstant('thread');
+local Signal = SharedRequire('Utility/Signal.lua')
+local tableStr = getServerConstant('table')
+local classNameStr = getServerConstant('Maid')
+local funcStr = getServerConstant('function')
+local threadStr = getServerConstant('thread')
 
 local Maid = {}
 Maid.ClassName = "Maid"
@@ -70,7 +70,7 @@ function Maid:__newindex(index, newTask)
 		elseif (typeof(oldTask) == 'thread') then
 			task.cancel(oldTask);
 		elseif oldTask.Destroy then
-			oldTask:Destroy();
+			oldTask:Destroy()
 		end
 	end
 end
