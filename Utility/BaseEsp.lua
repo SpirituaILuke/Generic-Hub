@@ -121,7 +121,7 @@ if (playerScriptsLoader) then
 			end;
 		end);
 
-		originalFunctions.runOnActor(actor, SharedRequire('Utlity/BaseParallel.lua'), commId or commEvent);
+		originalFunctions.runOnActor(actor, SharedRequire('Utility/BaseParallel.lua'), commId or commEvent);
 		table.insert(actors, {
 			actor = actor,
 			commEvent = commEvent

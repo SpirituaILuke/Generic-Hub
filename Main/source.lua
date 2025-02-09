@@ -196,7 +196,6 @@ end;
 originalFunctions.runOnActor = getgenv().run_on_actor;
 originalFunctions.createCommChannel = getgenv().create_comm_channel;
 
-print(originalFunctions)
 getgenv().originalFunctions = originalFunctions
 
 -- Main
