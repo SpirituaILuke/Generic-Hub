@@ -53,7 +53,7 @@ define("run_on_actor", function(actor, code)
     assert(typeof(code) == "string", ("bad argument #2 to 'run_on_actor' (string expected, got %s)"):format(typeof(code)))
 
     loadstring(code, "run_on_actor")()
-end, t)
+end)
 
 local comm_channels = {}
 define("create_comm_channel", function()
@@ -87,7 +87,7 @@ define("create_comm_channel", function()
     })
     comm_channels[id] = event
     return id, event
-end, t)
+end)
 
 define("get_comm_channel", function(id)
     local channel = comm_channels[id]
@@ -95,7 +95,7 @@ define("get_comm_channel", function(id)
         warn("bad argument #1 to 'get_comm_channel' (invalid communication channel)")
     end
     return channel
-end, t)
+end)
 
 local unavailable = {
     "create_secure_function",
