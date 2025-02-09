@@ -25,14 +25,28 @@ local executed = false
 
 local gameListContent = SharedRequire('Main/gameList.json')
 local supportedGamesList
+local gameName = nil
 
 local success, errorMessage = pcall(function()
     supportedGamesList = HttpService:JSONDecode(gameListContent)
 end)
 
 if success then
-    local gameName = supportedGamesList[tostring(game.GameId)]
-    print(gameName)
+    local gameId = tostring(game.GameId)
+    gameName = nil
+
+    for _, gameEntry in ipairs(supportedGamesList) do
+        if tostring(gameEntry[1]) == gameId then
+            gameName = gameEntry[2]
+            break
+        end
+    end
+
+    if gameName then
+        print(gameName)
+    else
+        warn("Game ID not found in the list!")
+    end
 else
     warn("Failed to decode JSON: " .. errorMessage)
 end
