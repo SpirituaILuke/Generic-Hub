@@ -47,7 +47,7 @@ local NUM_ACTORS = 8;
 
 local playerScripts = LocalPlayer:WaitForChild('PlayerScripts')
 
-local playerScriptsLoader = playerScripts:FindFirstChild('PlayerScriptsLoader');
+local playerScriptsLoader = nil
 local actors = {};
 
 local readyCount = 0;
