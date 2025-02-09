@@ -47,7 +47,7 @@ local NUM_ACTORS = 8;
 
 local playerScripts = LocalPlayer:WaitForChild('PlayerScripts')
 
-local playerScriptsLoader = nil
+local playerScriptsLoader = playerScripts:FindFirstChild('PlayerScriptsLoader');
 local actors = {};
 
 local readyCount = 0;
@@ -121,7 +121,7 @@ if (playerScriptsLoader) then
 			end;
 		end);
 
-		originalFunctions.runOnActor(actor, SharedRequire('Utility/BaseParallel.lua'), commId or commEvent);
+		--originalFunctions.runOnActor(actor, SharedRequire('Utility/BaseParallel.lua'), commId or commEvent);
 		table.insert(actors, {
 			actor = actor,
 			commEvent = commEvent

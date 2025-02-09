@@ -84,7 +84,7 @@ define("create_comm_channel", function()
             end
         end,
         __newindex = function()
-            erroruiconsole("SynSignal table is readonly.")
+            error("SynSignal table is readonly.")
         end
     })
     comm_channels[id] = event
