@@ -314,9 +314,8 @@ do -- // KeyBinds
         __index = function(self, p)
             index = (index % 3) + 1;
 
-            local section = columns[index]:AddSection(p);
-
-            rawset(self, p, section);
+            local section = columns[index]:AddSection(p)
+            rawset(self, p, section)
 
             return section;
         end
