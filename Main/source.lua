@@ -218,7 +218,7 @@ local gameName = nil
 print(`Current game id is [{gameId}]`)
 
 local supportedGamesList = {
-    {6989117155, "Baseplate"}
+    {4483381587, "Baseplate"}
 }
 
 for _, gameEntry in ipairs(supportedGamesList) do
