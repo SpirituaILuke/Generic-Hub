@@ -50,14 +50,12 @@ local playerScripts = LocalPlayer:WaitForChild('PlayerScripts')
 local playerScriptsLoader = playerScripts:FindFirstChild('PlayerScriptsLoader');
 local doParallel = false
 
-print("should do PARRARLYTL BLAYT" .. doParallel)
-
 local actors = {};
+local readyCount = 0
 
-local readyCount = 0;
 local broadcastEvent = Instance.new('BindableEvent');
-
 local gameName = nil
+
 local supportedGamesList = {
     {6989117155, "Baseplate"}
 }
