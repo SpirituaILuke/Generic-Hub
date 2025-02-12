@@ -1,5 +1,4 @@
 
-local library = SharedRequire('Utility/UILibrary.lua');
 local Utility = SharedRequire('Utility/Utility.lua');
 local Services = SharedRequire('Utility/Services.lua');
 

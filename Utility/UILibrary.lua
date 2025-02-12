@@ -59,10 +59,10 @@ do -- // Load
         while true do
             for i = 1, 360 do
                 library.chromaColor = Color3.fromHSV(i / 360, 1, 1);
-                task.wait(0.1);
-            end;
-        end;
-    end));
+                task.wait(0.1)
+            end
+        end
+    end))
 
     -- if(debugMode) then
         getgenv().library = library
