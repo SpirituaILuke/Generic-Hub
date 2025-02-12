@@ -112,9 +112,9 @@ if (playerScriptsLoader) then
 				commEvent:Fire({updateType = 'giveEvent', event = broadcastEvent, gameName = gameName});
 				actor:Destroy();
 
-				readyCount += 1;
+				readyCount += 1
 
-				connection:Disconnect();
+				connection:Disconnect()
 				connection = nil;
 			end;
 		end);
@@ -145,7 +145,7 @@ else
 
 	loadstring(SharedRequire('Utility/BaseParallel.lua'))(commId);
 	table.insert(actors, {commEvent = commEvent});
-    
+
 	readyCount = 1;
 end;
 

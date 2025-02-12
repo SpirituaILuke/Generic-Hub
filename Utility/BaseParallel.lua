@@ -17,7 +17,7 @@ return
             end,
 
             Fire = function(self, ...)
-                self._event:Fire(...);
+                self._event:Fire(...)
             end
         };
     else
@@ -26,10 +26,10 @@ return
 
     local flags = {};
 
-    local updateTypes = {};
+    local updateTypes = {}
 
-    local BaseESPParallel = {};
-    BaseESPParallel.__index = BaseESPParallel;
+    local BaseESPParallel = {}
+    BaseESPParallel.__index = BaseESPParallel
 
     local container = {};
     local DEFAULT_ESP_COLOR = Color3.fromRGB(255, 255, 255);
