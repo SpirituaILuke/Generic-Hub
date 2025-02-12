@@ -1,6 +1,5 @@
 
 local Services = SharedRequire('Utility/Services.lua')
-local library = SharedRequire('Utility/UILibrary.lua')
 local Signal = SharedRequire('Utility/Signal.lua')
 
 local Players, UserInputService, HttpService, CollectionService = Services:Get('Players', 'UserInputService', 'HttpService', 'CollectionService');
