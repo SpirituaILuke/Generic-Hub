@@ -1,3 +1,5 @@
+print("Initiating ESP.")
+
 local Maid = SharedRequire('Utility/Maid.lua');
 local Services = SharedRequire('Utility/Services.lua');
 local EntityESP = SharedRequire('Classes/EntityEsp.lua');
@@ -24,8 +26,6 @@ end;
 local function onPlayerRemoving(player)
     library.unloadMaid[player] = nil;
 end;
-
-print('initiated esp')
 
 Players.PlayerAdded:Connect(onPlayerAdded);
 Players.PlayerRemoving:Connect(onPlayerRemoving);

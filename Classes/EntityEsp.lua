@@ -94,15 +94,15 @@ else
 	end;
 
 	setRP = function(self, p, v)
-		self[p] = v;
+		self[p] = v
 	end;
 
 	destroyRP = function(self)
-		return self:Remove();
+		return self:Remove()
 	end;
 
     realGetRPProperty = getRPProperty;
-end;
+end
 
 local ESP_RED_COLOR, ESP_GREEN_COLOR = Color3.fromRGB(192, 57, 43), Color3.fromRGB(39, 174, 96)
 local TRIANGLE_ANGLE = mathRad(45);
