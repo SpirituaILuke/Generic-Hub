@@ -1,8 +1,6 @@
 local Maid = SharedRequire('Utility/Maid.lua');
 local Services = SharedRequire('Utility/Services.lua');
-
 local toCamelCase = SharedRequire('Utility/toCamelCase.lua');
-local library = SharedRequire('Utility/UILibrary.lua');
 
 local Players, CorePackages, HttpService = Services:Get('Players', 'CorePackages', 'HttpService');
 local LocalPlayer = Players.LocalPlayer;
@@ -134,8 +132,7 @@ if playerScriptsLoader and doParallel then
 	repeat task.wait(); until readyCount >= NUM_ACTORS;
 	print('All actors have been loaded');
 else
-    print("not doing pararel")
-	print("jork")
+	print("nop")
 	
 	local commId, commEvent = getgenv().create_comm_channel();
 
