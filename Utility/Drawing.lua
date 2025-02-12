@@ -669,8 +669,6 @@ do -- // DrawingLibrary
     UserInputService.InputBegan:Connect(function(...) handleInputEvent('InputBegan', ...) end);
     UserInputService.InputChanged:Connect(function(...) handleInputEvent('InputChanged', ...) end);
     UserInputService.InputEnded:Connect(function(...) handleInputEvent('InputEnded', ...) end);
-
-    getgenv().Drawing = DrawingLibrary
 end;
 
 return DrawingLibrary;
