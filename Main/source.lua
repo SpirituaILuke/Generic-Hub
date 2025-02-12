@@ -1,4 +1,5 @@
 local HttpService = game:GetService('HttpService');
+local ScriptVersion = "Script version - [v.01]"
 
 local statusEvent = getgenv().ah_statusEvent;
 local function setStatus(...)
@@ -378,3 +379,4 @@ ToastNotif.new({
 })
 
 getgenv().ah_loaded = true
+print(scriptVersion)
