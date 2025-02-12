@@ -87,7 +87,7 @@ define("create_comm_channel", function()
             end
         end,
         __newindex = function()
-            error("SynSignal table is readonly.")
+            print("SynSignal table is readonly.")
         end
     })
     comm_channels[id] = event
@@ -256,6 +256,7 @@ end
 local myScriptId = debug.info(1, 's')
 local seenErrors = {}
 
+--[[
 local function onScriptError(message)
     if (table.find(seenErrors, message)) then
         return
@@ -269,7 +270,7 @@ local function onScriptError(message)
 end
 
 ScriptContext.ErrorDetailed:Connect(onScriptError)
---[[
+
 if (gameName) then
     errorAnalytics:Report('Loaded', gameName, 1)
 
