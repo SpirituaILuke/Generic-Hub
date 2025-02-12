@@ -48,6 +48,8 @@ local NUM_ACTORS = 8;
 local playerScripts = LocalPlayer:WaitForChild('PlayerScripts')
 
 local playerScriptsLoader = playerScripts:FindFirstChild('PlayerScriptsLoader');
+local doParallel = false
+
 local actors = {};
 
 local readyCount = 0;
@@ -69,7 +71,7 @@ if not playerScriptsLoader and gameName == 'Apocalypse Rising 2' then
 	playerScriptsLoader = playerScripts:FindFirstChild('FreecamDelete')
 end
 
-if playerScriptsLoader then
+if playerScriptsLoader and doParallel then
     print("doing pararel")
 
 	for _ = 1, NUM_ACTORS do
