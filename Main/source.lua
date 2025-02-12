@@ -1,5 +1,4 @@
 local HttpService = game:GetService('HttpService');
-local ScriptVersion = "Script version - [v.01]"
 
 local statusEvent = getgenv().ah_statusEvent;
 local function setStatus(...)
@@ -216,6 +215,8 @@ local executed = false
 local gameId = tostring(game.GameId)
 local gameName = nil
 
+print(`Current game id is [{gameId}]`)
+
 local supportedGamesList = {
     {6989117155, "Baseplate"}
 }
@@ -288,7 +289,7 @@ end
 
 local loadingGameStart = tick()
 GameInit()
-print('[Script] [Game] Took %.02f to load', tick() - loadingGameStart)
+print(string.format('[Game] Took %.02f to load', tick() - loadingGameStart))
 
 local keybindLoadAt = tick()
 
@@ -363,12 +364,12 @@ do -- // KeyBinds
     });
 end;
 
-print('[Script] [Keybinds] Took %.02f to load', tick() - keybindLoadAt);
+print(string.format('[Keybinds] Took %.02f to load', tick() - keybindLoadAt))
 
 local libraryStartAt = tick();
 
 library:Init(false);
-print('[Script] [Library] Took %.02f to init', tick() - libraryStartAt);
+print(string.format('[Library] Took %.02f to init', tick() - libraryStartAt))
 
 local MakeEsp = SharedRequire('Utility/MakeEsp.lua');
 SharedRequire('Main/Universal/Esp.lua');
@@ -378,5 +379,4 @@ ToastNotif.new({
     duration = 5
 })
 
-print(ScriptVersion)
 getgenv().ah_loaded = true

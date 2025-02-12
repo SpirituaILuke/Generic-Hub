@@ -70,8 +70,6 @@ if not playerScriptsLoader and gameName == 'Apocalypse Rising 2' then
 end
 
 if playerScriptsLoader and doParallel then
-    print("doing pararel")
-
 	for _ = 1, NUM_ACTORS do
 		local commId, commEvent
 
@@ -109,8 +107,6 @@ if playerScriptsLoader and doParallel then
 
 		connection = commEvent:Connect(function(data)
 			if (data.updateType == 'ready') then
-                print("+1 reacdy.")
-
 				commEvent:Fire({updateType = 'giveEvent', event = broadcastEvent, gameName = gameName});
 				actor:Destroy()
 
@@ -132,14 +128,11 @@ if playerScriptsLoader and doParallel then
 	repeat task.wait(); until readyCount >= NUM_ACTORS;
 	print('All actors have been loaded');
 else
-	print("nop")
-
 	local commId, commEvent = getgenv().create_comm_channel()
 	local connection
 
 	connection = commEvent:Connect(function(data)
 		if (data.updateType == 'ready') then
-            print("+1 readyyyy")
 			connection:Disconnect();
 			connection = nil;
 

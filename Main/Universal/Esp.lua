@@ -33,10 +33,6 @@ for i, v in next, Players:GetPlayers() do
     task.spawn(onPlayerAdded, v);
 end;
 
-for Key, Value in next, entityEspList do
-    print(Key, Value)
-end
-
 local function updateEspState(toggle)
     if (not toggle) then
         maid.updateEsp = nil;

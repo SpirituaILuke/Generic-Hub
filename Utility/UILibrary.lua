@@ -219,7 +219,6 @@ do -- // Load
         end;
 
         library.unloadMaid:Destroy();
-        print("unloaded library.")
     end
 
     local function readFileAndDecodeIt(filePath)
