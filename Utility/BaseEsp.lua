@@ -148,7 +148,7 @@ else
 		end;
 	end);
 
-	loadstring(SharedRequire('Utility/BaseParallel.lua'))(commId);
+	--loadstring(SharedRequire('Utility/BaseParallel.lua'))(commId);
 	table.insert(actors, {commEvent = commEvent});
 
 	readyCount = 1;
