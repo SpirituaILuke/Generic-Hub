@@ -112,7 +112,7 @@ function Maid:DoCleaning()
 			taskData:Disconnect()
 		elseif (Signal.isSignal(taskData)) then
 			taskData:Destroy();
-		elseif typeof(taskData) == tableStr then
+		elseif typeof(taskData) == tableStr and taskData.Remove then
 			taskData:Remove();
 		elseif (typeof(taskData) == threadStr) then
 			task.cancel(taskData);
