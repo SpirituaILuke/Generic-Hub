@@ -69,11 +69,13 @@ if not playerScriptsLoader and gameName == 'Apocalypse Rising 2' then
 	playerScriptsLoader = playerScripts:FindFirstChild('FreecamDelete')
 end
 
-if (playerScriptsLoader) then
+if playerScriptsLoader then
+    print("doing pararel")
+
 	for _ = 1, NUM_ACTORS do
 		local commId, commEvent;
 
-		if not syn then
+		if syn then
 			commEvent = {
 				_event = Instance.new('BindableEvent'),
 
@@ -130,6 +132,7 @@ if (playerScriptsLoader) then
 	repeat task.wait(); until readyCount >= NUM_ACTORS;
 	print('All actors have been loaded');
 else
+    print("not doing pararel")
 	local commId, commEvent = getgenv().create_comm_channel();
 
 	local connection;
