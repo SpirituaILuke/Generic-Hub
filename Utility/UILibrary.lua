@@ -3246,9 +3246,12 @@ do -- // Load
         end;
 
         library.OnLoad:Fire();
-        library.OnLoad:Destroy();
-        library.OnLoad = nil;
-    end;
+
+        task.delay(2, function()
+            library.OnLoad:Destroy();
+            library.OnLoad = nil;
+        end)
+    end
 
     function library:SetTitle(text)
         if (not self.titleLabel) then
