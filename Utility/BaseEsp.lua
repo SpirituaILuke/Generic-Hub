@@ -135,6 +135,8 @@ if playerScriptsLoader and doParallel then
 	print('All actors have been loaded');
 else
     print("not doing pararel")
+	print("jork")
+	
 	local commId, commEvent = getgenv().create_comm_channel();
 
 	local connection;
