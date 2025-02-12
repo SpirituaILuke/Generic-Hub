@@ -370,6 +370,7 @@ library:Init(false);
 print('[Script] [Library] Took %.02f to init', tick() - libraryStartAt);
 
 local MakeEsp = SharedRequire('Utility/MakeEsp.lua');
+SharedRequire('Main/Universal/Esp.lua');
 
 ToastNotif.new({
     text = string.format('Script loaded in %.02fs', tick() - scriptLoadAt),
