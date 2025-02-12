@@ -6,8 +6,8 @@ local Utility = SharedRequire('Utility/Utility.lua');
 local Players, RunService = Services:Get(getServerConstant('Players'), getServerConstant('RunService'));
 local LocalPlayer = Players.LocalPlayer;
 
-local maid = Maid.new();
-local entityEspList = {};
+local maid = Maid.new()
+local entityEspList = {}
 
 local function onPlayerAdded(player)
     if (player == LocalPlayer) then return end;

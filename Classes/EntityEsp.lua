@@ -6,11 +6,11 @@ local RunService, UserInputService, HttpService = Services:Get('RunService', 'Us
 
 local EntityESP = {}
 
-local worldToViewportPoint = clonefunction(Instance.new('Camera').WorldToViewportPoint);
-local vectorToWorldSpace = CFrame.new().VectorToWorldSpace;
+local worldToViewportPoint = clonefunction(Instance.new('Camera').WorldToViewportPoint)
+local vectorToWorldSpace = CFrame.new().VectorToWorldSpace
 local getMouseLocation = clonefunction(UserInputService.GetMouseLocation);
 
-local id = HttpService:GenerateGUID(false);
+local id = HttpService:GenerateGUID(false)
 
 local lerp = Color3.new().lerp;
 local flags = library.flags;
@@ -107,7 +107,7 @@ end;
 local ESP_RED_COLOR, ESP_GREEN_COLOR = Color3.fromRGB(192, 57, 43), Color3.fromRGB(39, 174, 96)
 local TRIANGLE_ANGLE = mathRad(45);
 
-do --// Entity ESP
+do
     EntityESP = {};
     EntityESP.__index = EntityESP;
     EntityESP.__ClassName = 'entityESP';
