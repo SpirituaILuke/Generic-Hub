@@ -17,7 +17,6 @@ local LocalPlayer = Players.LocalPlayer;
 local visualizer;
 
 if getgenv().library then
-	--getgenv().library:Unload();
     return
 end
 

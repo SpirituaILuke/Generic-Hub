@@ -285,7 +285,7 @@ local function onCharacterAdded(player)
         end;
     end;
 
-    if (library.OnLoad) then
+    if library.OnLoad then
         library.OnLoad:Connect(fire);
     else
         fire();
@@ -315,7 +315,7 @@ local function onPlayerAdded(player)
         playerData.team = player.Team;
     end);
 
-    if (library.OnLoad) then
+    if library.OnLoad then
         library.OnLoad:Connect(fire);
     else
         fire();
