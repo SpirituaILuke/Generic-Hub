@@ -95,12 +95,10 @@ do -- // Load
     }
 
     local function onInputBegan(input, gpe)
-        print("Input began")
         local inputType = input.UserInputType;
         if (inputType == mouseMovement) then return end;
 
         if (UserInputService:GetFocusedTextBox()) then
-            print("na focused")
              return 
         end;
         local inputKeyCode = input.KeyCode;
