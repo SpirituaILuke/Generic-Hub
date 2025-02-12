@@ -215,10 +215,8 @@ local executed = false
 local gameId = tostring(game.GameId)
 local gameName = nil
 
-print(`Current game id is [{gameId}]`)
-
 local supportedGamesList = {
-    {4483381587, "Baseplate"}
+    {1430993116, "Baseplate"}
 }
 
 for _, gameEntry in ipairs(supportedGamesList) do
