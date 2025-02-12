@@ -372,6 +372,6 @@ print('[Script] [Library] Took %.02f to init', tick() - libraryStartAt);
 ToastNotif.new({
     text = string.format('Script loaded in %.02fs', tick() - scriptLoadAt),
     duration = 5
-});
+})
 
 getgenv().ah_loaded = true
