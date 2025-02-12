@@ -378,5 +378,5 @@ ToastNotif.new({
     duration = 5
 })
 
-getgenv().ah_loaded = true
 print(ScriptVersion)
+getgenv().ah_loaded = true

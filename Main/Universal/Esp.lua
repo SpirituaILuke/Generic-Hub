@@ -1,4 +1,3 @@
-print("Initiating ESP.")
 
 local Maid = SharedRequire('Utility/Maid.lua');
 local Services = SharedRequire('Utility/Services.lua');
