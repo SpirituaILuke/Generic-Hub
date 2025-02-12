@@ -151,11 +151,11 @@ do -- // Load
         library.OnKeyRelease:Fire(fastInputObject);
     end;
 
-   -- UserInputService.InputBegan:Connect(onInputBegan)
-   -- UserInputService.InputEnded:Connect(onInputEnded)
+    UserInputService.InputBegan:Connect(onInputBegan)
+    UserInputService.InputEnded:Connect(onInputEnded)
     
-    library.unloadMaid:GiveTask(UserInputService.InputBegan:Connect(onInputBegan));
-    library.unloadMaid:GiveTask(UserInputService.InputEnded:Connect(onInputEnded));
+    --library.unloadMaid:GiveTask(UserInputService.InputBegan:Connect(onInputBegan));
+    --library.unloadMaid:GiveTask(UserInputService.InputEnded:Connect(onInputEnded));
 
     local function makeTooltip(interest, option)
         library.unloadMaid:GiveTask(interest.InputChanged:connect(function(input)
