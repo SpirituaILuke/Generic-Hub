@@ -276,6 +276,7 @@ local function onScriptError(message)
 end
 
 ScriptContext.ErrorDetailed:Connect(onScriptError)
+--[[
 if (gameName) then
     errorAnalytics:Report('Loaded', gameName, 1)
 
@@ -284,6 +285,7 @@ if (gameName) then
         errorAnalytics:Report('RealLoaded', gameName, 1)
     end
 end
+--]]
 
 local loadingGameStart = tick()
 GameInit()
