@@ -162,9 +162,9 @@ do -- // Load
                 if option.tip then
                     library.tooltip.Text = option.tip;
                     library.tooltip.Position = UDim2.new(0, input.Position.X + 26, 0, input.Position.Y + 36);
-                end;
-            end;
-        end));
+                end
+            end
+        end))
 
         library.unloadMaid:GiveTask(interest.InputEnded:connect(function(input)
             if input.UserInputType.Name == 'MouseMovement' then

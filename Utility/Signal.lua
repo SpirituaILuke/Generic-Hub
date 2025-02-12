@@ -71,6 +71,6 @@ function Signal:Destroy()
 
 	self._argData = nil
 	self._argCount = nil
-end
+end;
 
 return Signal
