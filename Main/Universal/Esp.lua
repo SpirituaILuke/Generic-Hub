@@ -25,18 +25,16 @@ local function onPlayerRemoving(player)
     library.unloadMaid[player] = nil;
 end;
 
-library.OnLoad:Connect(function()
-    Players.PlayerAdded:Connect(onPlayerAdded);
-    Players.PlayerRemoving:Connect(onPlayerRemoving);
+Players.PlayerAdded:Connect(onPlayerAdded);
+Players.PlayerRemoving:Connect(onPlayerRemoving);
 
-    for i, v in next, Players:GetPlayers() do
-        task.spawn(onPlayerAdded, v);
-    end;
+for i, v in next, Players:GetPlayers() do
+    task.spawn(onPlayerAdded, v);
+end;
 
-    for Key, Value in next, entityEspList do
-        print(Key, Value)
-    end
-end);
+for Key, Value in next, entityEspList do
+    print(Key, Value)
+end
 
 local function updateEspState(toggle)
     if (not toggle) then
