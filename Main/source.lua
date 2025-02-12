@@ -110,7 +110,6 @@ end
 
 --define("syn", t)
 --setreadonly(syn, true)
-
 -- Init Checks
 
 local originalFunctions = {};
