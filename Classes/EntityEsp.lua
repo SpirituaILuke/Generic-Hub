@@ -1,6 +1,6 @@
 
-local Utility = SharedRequire('Utility/Utility.lua');
-local Services = SharedRequire('Utility/Services.lua');
+local Utility = SharedRequire('Utility/Utility.lua')
+local Services = SharedRequire('Utility/Services.lua')
 
 local RunService, UserInputService, HttpService = Services:Get('RunService', 'UserInputService', 'HttpService');
 
