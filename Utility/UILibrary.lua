@@ -16,6 +16,10 @@ local ToastNotif = SharedRequire('Classes/ToastNotif.lua');
 local LocalPlayer = Players.LocalPlayer;
 local visualizer;
 
+if getgenv().ah_loaded then
+    return
+end
+
 if getgenv().library then
 	getgenv().library:Unload();
 end;
