@@ -19,19 +19,19 @@ local visualizer;
 if getgenv().library then
 	--getgenv().library:Unload();
     return
-end;
+end
 
 if (not isfile('Generic Hub/configs')) then
-    makefolder('Generic Hub/configs');
-end;
+    makefolder('Generic Hub/configs')
+end
 
 if (not isfile('Generic Hub/configs/globalConf.bin')) then
     -- By default global config is turned on
     writefile('Generic Hub/configs/globalConf.bin', 'true')
 end
 
-local globalConfFilePath = 'Generic Hub/configs/globalConf.bin';
-local isGlobalConfigOn = readfile(globalConfFilePath) == 'true';
+local globalConfFilePath = 'Generic Hub/configs/globalConf.bin'
+local isGlobalConfigOn = readfile(globalConfFilePath) == 'true'
 
 local library = {
     unloadMaid = Maid.new(),
