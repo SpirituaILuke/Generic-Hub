@@ -205,12 +205,15 @@ local toCamelCase = SharedRequire('Utility/toCamelCase.lua')
 local ToastNotif = SharedRequire('Classes/ToastNotif.lua');
 local AnalayticsAPI = SharedRequire('Classes/AnalyticsAPI.lua');
 local Utility = SharedRequire('Utility/Utility.lua');
+local MockDrawing = SharedRequire('Utility/MockDrawing.lua');
 
 local errorAnalytics = AnalayticsAPI.new(getServerConstant('UA-187309782-1'));
 local Players, TeleportService, ScriptContext, MemStorageService, HttpService, ReplicatedStorage = Services:Get(getServerConstant('Players'), 'TeleportService', 'ScriptContext', 'MemStorageService', 'HttpService', 'ReplicatedStorage');
 
 local LocalPlayer = Players.LocalPlayer
 local executed = false
+
+getgenv.Drawing = MockDrawing
 
 local gameId = tostring(game.GameId)
 local gameName = nil
