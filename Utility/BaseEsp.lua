@@ -110,12 +110,12 @@ if (playerScriptsLoader) then
                 print("+1 reacdy.")
 
 				commEvent:Fire({updateType = 'giveEvent', event = broadcastEvent, gameName = gameName});
-				actor:Destroy();
+				actor:Destroy()
 
 				readyCount += 1
 
 				connection:Disconnect()
-				connection = nil;
+				connection = nil
 			end;
 		end);
 
