@@ -75,7 +75,7 @@ if playerScriptsLoader and doParallel then
     print("doing pararel")
 
 	for _ = 1, NUM_ACTORS do
-		local commId, commEvent;
+		local commId, commEvent
 
 		if syn then
 			commEvent = {

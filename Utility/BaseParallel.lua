@@ -63,8 +63,8 @@ else
     local lineUpvalues2 = getupvalue(Drawing.new, 4).__newindex;
 
     realSetRP = getupvalue(lineUpvalues2, 4);
-    realDestroyRP = getupvalue(lineUpvalues, 3);
-    realGetRPProperty = getupvalue(lineUpvalues, 4);
+    realDestroyRP = getupvalue(lineUpvalues, 3)
+    realGetRPProperty = getupvalue(lineUpvalues, 4)
 
     assert(realSetRP);
     assert(realDestroyRP);
