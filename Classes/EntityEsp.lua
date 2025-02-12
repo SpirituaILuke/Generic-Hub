@@ -4,7 +4,7 @@ local Services = SharedRequire('Utility/Services.lua')
 
 local RunService, UserInputService, HttpService = Services:Get('RunService', 'UserInputService', 'HttpService');
 
-local EntityESP = {};
+local EntityESP = {}
 
 local worldToViewportPoint = clonefunction(Instance.new('Camera').WorldToViewportPoint);
 local vectorToWorldSpace = CFrame.new().VectorToWorldSpace;
