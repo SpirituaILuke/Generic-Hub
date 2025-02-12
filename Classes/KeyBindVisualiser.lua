@@ -134,8 +134,8 @@ function keybindVisualizer:RemoveText(txt)
 end
 
 function keybindVisualizer:UpdateColor(color)
-    if (self._destroyed) then return end;
-    self._textBox.Color = color;
+    if (self._destroyed) then return end
+    self._textBox.Color = color
 end;
 
 function keybindVisualizer:SetEnabled(state)
