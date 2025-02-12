@@ -1,8 +1,8 @@
 
 local Maid = SharedRequire('Utility/Maid.lua');
-local Services = SharedRequire('Utility/Services.lua');
-local EntityESP = SharedRequire('Classes/EntityEsp.lua');
-local Utility = SharedRequire('Utility/Utility.lua');
+local Services = SharedRequire('Utility/Services.lua')
+local EntityESP = SharedRequire('Classes/EntityEsp.lua')
+local Utility = SharedRequire('Utility/Utility.lua')
 
 local Players, RunService = Services:Get(getServerConstant('Players'), getServerConstant('RunService'));
 local LocalPlayer = Players.LocalPlayer;
