@@ -63,7 +63,7 @@ function Maid:__newindex(index, newTask)
 			oldTask()
 		elseif typeof(oldTask) == "RBXScriptConnection" then
 			oldTask:Disconnect();
-		elseif typeof(taskData) == 'table' and typeof(taskData.Remove) == 'function' then
+		elseif typeof(oldTask) == 'table' and typeof(oldTask.Remove) == 'function'  then
 			oldTask:Remove();
 		elseif (Signal.isSignal(oldTask)) then
 			oldTask:Destroy();
@@ -112,7 +112,7 @@ function Maid:DoCleaning()
 			taskData:Disconnect()
 		elseif (Signal.isSignal(taskData)) then
 			taskData:Destroy();
-		elseif typeof(taskData) == 'table' and typeof(taskData.Remove) == 'function' then
+		elseif typeof(taskData) == tableStr and typeof(taskData.Remove) == 'function'  then
 			taskData:Remove();
 		elseif (typeof(taskData) == threadStr) then
 			task.cancel(taskData);
