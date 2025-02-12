@@ -32,6 +32,10 @@ library.OnLoad:Connect(function()
     for i, v in next, Players:GetPlayers() do
         task.spawn(onPlayerAdded, v);
     end;
+
+    for Key, Value in next, entityEspList do
+        print(Key, Value)
+    end
 end);
 
 local function updateEspState(toggle)
