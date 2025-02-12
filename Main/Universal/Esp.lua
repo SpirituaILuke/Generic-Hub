@@ -25,6 +25,8 @@ local function onPlayerRemoving(player)
     library.unloadMaid[player] = nil;
 end;
 
+print('initiated esp')
+
 Players.PlayerAdded:Connect(onPlayerAdded);
 Players.PlayerRemoving:Connect(onPlayerRemoving);
 
