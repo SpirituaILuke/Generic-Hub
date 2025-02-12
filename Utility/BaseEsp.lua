@@ -52,18 +52,9 @@ local actors = {};
 local readyCount = 0
 
 local broadcastEvent = Instance.new('BindableEvent');
-local gameName = nil
 
-local supportedGamesList = {
-    {6989117155, "Baseplate"}
-}
-
-for _, gameEntry in ipairs(supportedGamesList) do
-    if tostring(gameEntry[1]) == gameId then
-        gameName = gameEntry[2]
-        break
-    end
-end
+local gameId = game.GameId
+local gameName = getgenv().SupportedGames[gameId] or nil = nil
 
 if not playerScriptsLoader and gameName == 'Apocalypse Rising 2' then
 	playerScriptsLoader = playerScripts:FindFirstChild('FreecamDelete')

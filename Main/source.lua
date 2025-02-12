@@ -25,6 +25,11 @@ local function define(name, value, parent)
 	end
 end
 
+getgenv().SupportedGames = {
+    [1430993116] = "Baseplate",
+    [14038329225] = "Archived"
+}
+
 -- Setup mock synapse functions
 
 local actors = {}
@@ -211,19 +216,8 @@ local Players, TeleportService, ScriptContext, MemStorageService, HttpService, R
 local LocalPlayer = Players.LocalPlayer
 local executed = false
 
-local gameId = tostring(game.GameId)
-local gameName = nil
-
-local supportedGamesList = {
-    {1430993116, "Baseplate"}
-}
-
-for _, gameEntry in ipairs(supportedGamesList) do
-    if tostring(gameEntry[1]) == gameId then
-        gameName = gameEntry[2]
-        break
-    end
-end
+local gameId = game.GameId
+local gameName = getgenv().SupportedGames[gameId] or nil
 
 local function GameInit()
     if not gameName then

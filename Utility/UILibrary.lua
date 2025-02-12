@@ -17,7 +17,7 @@ local LocalPlayer = Players.LocalPlayer;
 local visualizer;
 
 if getgenv().library then
-    return
+    return library
 end
 
 if (not isfile('Generic Hub/configs')) then
