@@ -235,11 +235,11 @@ do -- // Load
     end;
 
     local function getConfigForGame(configData)
-        local configValueName = library.gameName or 'Universal';
+        local configValueName = library.gameName or 'Universal'
 
         if (not configData[configValueName]) then
-            configData[configValueName] = {};
-        end;
+            configData[configValueName] = {}
+        end
 
         return configData[configValueName];
     end;
