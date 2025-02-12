@@ -637,7 +637,7 @@ do -- // DrawingLibrary
 
         table.insert(DrawingLibraryPrivate.AllObjects, self);
         return self;
-    end;
+    end
 
     local function handleInputEvent(inputType, input, gpe)
         -- body

@@ -27,8 +27,8 @@ end;
 
 if (not isfile('Generic Hub/configs/globalConf.bin')) then
     -- By default global config is turned on
-    writefile('Generic Hub/configs/globalConf.bin', 'true');
-end;
+    writefile('Generic Hub/configs/globalConf.bin', 'true')
+end
 
 local globalConfFilePath = 'Generic Hub/configs/globalConf.bin';
 local isGlobalConfigOn = readfile(globalConfFilePath) == 'true';
@@ -74,7 +74,6 @@ do -- // Load
     library.OnKeyRelease = Signal.new();
 
     library.OnFlagChanged = Signal.new();
-
     KeyBindVisualizer.init(library);
 
     library.unloadMaid:GiveTask(library.OnLoad);
