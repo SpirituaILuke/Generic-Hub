@@ -3247,7 +3247,7 @@ do -- // Load
 
         library.OnLoad:Fire();
 
-        task.delay(2, function()
+        task.delay(10, function()
             library.OnLoad:Destroy();
             library.OnLoad = nil;
         end)
