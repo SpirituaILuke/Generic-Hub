@@ -91,6 +91,7 @@ end
 
 --- Cleans up all tasks.
 -- @alias Destroy
+
 function Maid:DoCleaning()
 	local tasks = self._tasks
 

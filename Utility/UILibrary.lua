@@ -124,7 +124,7 @@ do -- // Load
         };
 
         library.OnKeyPress:Fire(fastInputObject, gpe);
-    end;
+    end
 
     local function onInputEnded(input)
         local inputType = input.UserInputType;
@@ -149,7 +149,7 @@ do -- // Load
         };
 
         library.OnKeyRelease:Fire(fastInputObject);
-    end;
+    end
 
     UserInputService.InputBegan:Connect(onInputBegan)
     UserInputService.InputEnded:Connect(onInputEnded)
