@@ -20,10 +20,10 @@ if (typeof(originalCommEvent) == 'table') then
         Fire = function(self, ...)
             self._event:Fire(...)
         end
-    };
+    }
 else
     commEvent = getgenv().get_comm_channel(originalCommEvent);
-end;
+end
 
 local flags = {}
 local updateTypes = {}

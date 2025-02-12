@@ -118,14 +118,14 @@ if playerScriptsLoader then
 
 				connection:Disconnect()
 				connection = nil
-			end;
-		end);
+			end
+		end)
 
 		originalFunctions.runOnActor(actor, SharedRequire('Utility/BaseParallel.lua'), commId or commEvent);
 		table.insert(actors, {
 			actor = actor,
 			commEvent = commEvent
-		});
+		})
 	end;
 
 	print('Waiting for actors');
