@@ -133,9 +133,9 @@ if playerScriptsLoader and doParallel then
 	print('All actors have been loaded');
 else
 	print("nop")
-	
+
 	local commId, commEvent = getgenv().create_comm_channel()
-	local connection;
+	local connection
 
 	connection = commEvent:Connect(function(data)
 		if (data.updateType == 'ready') then

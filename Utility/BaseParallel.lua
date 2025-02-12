@@ -329,10 +329,10 @@ function updateTypes.giveEvent(data)
 end;
 
 commEvent:Connect(function(data)
-    local f = updateTypes[data.updateType];
-    if (not f) then return end;
-    f(data);
-end);
+    local f = updateTypes[data.updateType]
+    if (not f) then return end
+    f(data)
+end)
 
 commEvent:Fire({updateType = 'ready'});
 

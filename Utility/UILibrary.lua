@@ -3192,7 +3192,7 @@ do -- // Load
                         self.options.configList:RemoveValue(config)
                     end
                 end
-                task.wait(1);
+                task.wait(1)
             end
         end)
 
