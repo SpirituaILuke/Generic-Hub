@@ -1,4 +1,4 @@
-
+print("oyy baka.")
 
 
 local Players = game:GetService('Players')
