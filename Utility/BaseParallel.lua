@@ -24,8 +24,7 @@ return
         commEvent = getgenv().get_comm_channel(originalCommEvent);
     end;
 
-    local flags = {};
-
+    local flags = {}
     local updateTypes = {}
 
     local BaseESPParallel = {}
@@ -44,7 +43,7 @@ return
     local realDestroyRP;
     local realGetRPProperty;
 
-    if (isSynapseV3) then
+    if not syn then
         realGetRPProperty = function(self, p, v)
             return self[p];
         end;
@@ -87,7 +86,7 @@ return
     local findFirstChild = clonefunction(game.FindFirstChild);
     local getAttribute = clonefunction(game.GetAttribute);
 
-    if (isSynapseV3) then
+    if not syn then
         setRP = realSetRP;
         getRPProperty = realGetRPProperty;
     else
@@ -111,7 +110,6 @@ return
         end;
     end;
 
-
     function BaseESPParallel.new(data, showESPFlag, customInstance)
         local self = setmetatable(data, BaseESPParallel);
 
@@ -129,7 +127,7 @@ return
         self._showFlag2 = showESPFlag;
 
 
-		if (isSynapseV3 and typeof(instance) == 'Instance' and false) then
+		if syn and typeof(instance) == 'Instance' and false then
 			-- if (typeof(instance) == 'table') then
 			-- 	task.spawn(error, instance);
 			-- end;
