@@ -53,14 +53,14 @@ local destroyRP;
 
 local scalarSize = 20;
 
-if syn then
-	local lineUpvalues = getupvalue(Drawing.new, 4).__index;
-	local lineUpvalues2 = getupvalue(Drawing.new, 4).__newindex;
+if not syn then
+	local lineUpvalues = debug.getupvalue(Drawing.new, 4).__index;
+	local lineUpvalues2 = debug.getupvalue(Drawing.new, 4).__newindex;
 
 	-- destroyRP, getRPProperty = getupvalue(lineUpvalues, 3), getupvalue(lineUpvalues, 4);
-	local realSetRP = getupvalue(lineUpvalues2, 4);
-    local realDestroyRP = getupvalue(lineUpvalues, 3);
-    realGetRPProperty = getupvalue(lineUpvalues, 4);
+	local realSetRP = debug.getupvalue(lineUpvalues2, 4);
+    local realDestroyRP = debug.getupvalue(lineUpvalues, 3);
+    realGetRPProperty = debug.getupvalue(lineUpvalues, 4);
 
     assert(realSetRP);
     assert(realDestroyRP);
