@@ -286,6 +286,11 @@ if (gameName) then
 end
 --]]
 
+ToastNotif.new({
+    text = `Loading.`,
+    duration = 2.3
+})
+
 local loadingGameStart = tick()
 GameInit()
 print(string.format('[Game] Took %.02f to load', tick() - loadingGameStart))
@@ -374,7 +379,7 @@ local MakeEsp = SharedRequire('Utility/MakeEsp.lua');
 SharedRequire('Main/Universal/Esp.lua');
 
 ToastNotif.new({
-    text = string.format('Script loaded in %.02fs', tick() - scriptLoadAt),
+    text = string.format('loaded in %.02fs', tick() - scriptLoadAt),
     duration = 5
 })
 
