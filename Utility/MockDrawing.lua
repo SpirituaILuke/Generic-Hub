@@ -20,4 +20,6 @@ function MockDrawing.new(instanceType)
     return self
 end
 
+getgenv().Drawing = MockDrawing
+
 return MockDrawing

@@ -213,8 +213,6 @@ local Players, TeleportService, ScriptContext, MemStorageService, HttpService, R
 local LocalPlayer = Players.LocalPlayer
 local executed = false
 
-getgenv().Drawing = MockDrawing
-
 local gameId = tostring(game.GameId)
 local gameName = nil
 
@@ -377,4 +375,4 @@ ToastNotif.new({
     duration = 5
 });
 
-getgenv().ah_loaded = true;
+getgenv().ah_loaded = true
