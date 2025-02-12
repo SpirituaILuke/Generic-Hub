@@ -149,11 +149,9 @@ do -- // Load
 
     --UserInputService.InputBegan:Connect(onInputBegan)
     --UserInputService.InputEnded:Connect(onInputEnded)
+
     library.unloadMaid:GiveTask(UserInputService.InputBegan:Connect(onInputBegan));
     library.unloadMaid:GiveTask(UserInputService.InputEnded:Connect(onInputEnded));
-
-    print(library)
-    print(library.unloadMaid)
 
     local function makeTooltip(interest, option)
         library.unloadMaid:GiveTask(interest.InputChanged:connect(function(input)
@@ -222,6 +220,7 @@ do -- // Load
         end;
 
         library.unloadMaid:Destroy();
+        print("unloaded library.")
     end
 
     local function readFileAndDecodeIt(filePath)
