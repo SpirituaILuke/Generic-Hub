@@ -364,11 +364,11 @@ do -- // Load
 
     function library:UpdateConfig()
         if (not library.hasInit) then return end;
-        debug.profilebegin('Config Save');
+        --debug.profilebegin('Config Save');
 
         library:SaveConfig(library.loadedConfig or 'default');
 
-        debug.profileend();
+        --debug.profileend();
     end;
 
     local function createLabel(option, parent)

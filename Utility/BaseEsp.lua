@@ -54,7 +54,7 @@ local readyCount = 0
 local broadcastEvent = Instance.new('BindableEvent');
 
 local gameId = game.GameId
-local gameName = getgenv().SupportedGames[gameId] or nil = nil
+local gameName = getgenv().SupportedGames[gameId] or nil
 
 if not playerScriptsLoader and gameName == 'Apocalypse Rising 2' then
 	playerScriptsLoader = playerScripts:FindFirstChild('FreecamDelete')
